@@ -35,13 +35,23 @@ This document provides setup instructions, design decisions, and testing guideli
     ```bash
     php yii migrate
 
-5. ***Insert Initial Admin Record**
-  Execute the following SQL command to create an initial admin user
-   OR you can upload myDB also it is in the files name **user_management.sql**
-  there are 2 users for admin ==> username : admin , Password : admin 
-  for user ==> username : kawish99, Pasword : 12345678
-  ```INSERT INTO `user` (`username`, `email`, `password`, `auth_key`, `created_at`, `updated_at`, `role`)
-VALUES ('admin', 'admin@example.com', 'hashed-password', 'random-auth-key', UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 'admin');
+5. **Insert Initial Data**
+   - Execute the following SQL command to create initial admin and user records:
+     ```sql
+     INSERT INTO `user` (`username`, `email`, `password`, `auth_key`, `created_at`, `updated_at`, `role`)
+     VALUES 
+     ('admin', 'admin@example.com', 'hashed-password', 'random-auth-key', UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 'admin'),
+     ('kawish99', 'kawish@example.com', 'hashed-password', 'random-auth-key', UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 'user');
+     ```
+     - Replace `hashed-password` with the actual hashed passwords.
+
+   - Alternatively, you can upload the `user_management.sql` file located in the repository. This file contains the following users:
+     - **Admin**
+       - Username: `admin`
+       - Password: `admin`
+     - **User**
+       - Username: `kawish99`
+       - Password: `12345678`
 
 **Challenges**
 - Date Formatting: Adjusted SQL queries to handle dates correctly.
